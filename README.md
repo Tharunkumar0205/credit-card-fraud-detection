@@ -1,34 +1,92 @@
-# Credit Card Fraud Detection
+# 🚨 Credit Card Fraud Detection System
 
-This project demonstrates an end-to-end machine learning workflow for detecting fraudulent credit card transactions using a real-world, highly imbalanced dataset.
+An end-to-end machine learning pipeline for detecting fraudulent credit card transactions using a highly imbalanced real-world dataset.
 
-## Dataset
-- Source: Kaggle Credit Card Fraud Detection (ULB)
-- Transactions: ~283K (after deduplication)
-- Fraud rate: ~0.17%
+This project covers:
 
-## Key Steps
-- Data validation and cleaning
-- Duplicate transaction removal
-- Class imbalance analysis
+- Data preprocessing & validation
 - Exploratory Data Analysis (EDA)
-- Baseline model preparation (next phase)
+- Model training & evaluation
+- Probability calibration (Platt Scaling)
+- Threshold optimization
+- Production API deployment using FastAPI
 
-## EDA Highlights
-- No missing values across features
-- 1,081 duplicate transactions removed
-- Extreme class imbalance confirmed
-- PCA-transformed features already standardized
-- `Time` and `Amount` require scaling
+---
 
-## Tech Stack
-- Python
-- Pandas, NumPy
-- Scikit-learn
-- Jupyter Notebook
+## 📊 Dataset
 
-## Next Steps
-- Baseline Logistic Regression model
-- Proper evaluation using ROC-AUC and PR-AUC
-- Threshold tuning
-- API deployment using FastAPI
+- Source: Kaggle – ULB Credit Card Fraud Detection
+- Total Transactions: 283,726
+- Fraud Cases: 492 (~0.17%)
+- Features: 30 numerical features (PCA-transformed except `Time` and `Amount`)
+
+This dataset represents a realistic fraud detection problem with extreme class imbalance.
+
+---
+
+## 🔎 Project Workflow
+
+### 1️⃣ Data Cleaning & Validation
+
+- Removed 1,081 duplicate transactions
+- Verified zero missing values
+- Confirmed severe class imbalance
+- Validated feature consistency
+
+---
+
+### 2️⃣ Exploratory Data Analysis (EDA)
+
+- Fraud vs non-fraud distribution analysis
+- Transaction amount comparison
+- Time-based fraud pattern analysis
+- Correlation inspection
+- Outlier analysis
+
+Key Observations:
+
+- Fraud transactions show different amount behavior
+- PCA features are already standardized
+- `Time` and `Amount` required scaling
+
+---
+
+### 3️⃣ Model Training
+
+Models Evaluated:
+
+- Logistic Regression (baseline)
+- XGBoost (final selected model)
+
+Evaluation Metrics:
+
+- ROC-AUC
+- PR-AUC (Primary metric for imbalance)
+- Precision
+- Recall
+- F1 Score
+- Confusion Matrix at optimized threshold
+
+---
+
+### 4️⃣ Probability Calibration
+
+Applied Platt Scaling to calibrate model probabilities.
+
+Why?
+Raw model probabilities were overconfident. Calibration improves reliability for real-world decision-making.
+
+Saved artifacts:
+
+- `models/xgb_fraud_model_raw.joblib`
+- `models/platt_calibrator.joblib`
+- `models/threshold.json`
+- `models/feature_columns.json`
+
+---
+
+### 5️⃣ FastAPI Deployment
+
+The trained model is deployed as a REST API.
+
+### Endpoint

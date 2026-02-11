@@ -1,13 +1,23 @@
+# python
 __pycache__/
 *.pyc
 .ipynb_checkpoints/
+
+# mac
 .DS_Store
 
-# datasets (do not push)
-creditcard.csv
-creditcard.csv.zip
-data/creditcard_clean.csv
+# datasets / outputs (do not push)
+*.csv
+*.zip
+data/
+predictions.csv
 
-# environment
+# model artifacts (do not push)
+models/
+*.joblib
+*.pkl
+
+# env
 .env
-.venv
+.venv/
+fraud_env/
