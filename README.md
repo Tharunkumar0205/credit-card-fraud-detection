@@ -92,8 +92,11 @@ The trained model is deployed as a REST API.
 ### How to Run
 
 python -m venv .venv
+
 source .venv/bin/activate
+
 pip install -r requirements.txt
+
 uvicorn app:app --reload
 
 ### API usage:
