@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.DS_Store
+
+# datasets (do not push)
+creditcard.csv
+creditcard.csv.zip
+data/creditcard_clean.csv
+
+# environment
+.env
+.venv
