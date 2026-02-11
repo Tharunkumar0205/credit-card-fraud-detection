@@ -89,4 +89,18 @@ Saved artifacts:
 
 The trained model is deployed as a REST API.
 
+### How to Run
+
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+uvicorn app:app --reload
+
+### API usage:
+
+curl -X POST "http://127.0.0.1:8000/predict-csv" \
+ -H "accept: application/json" \
+ -H "Content-Type: multipart/form-data" \
+ -F "file=@data/creditcard_clean.csv;type=text/csv"
+
 ### Endpoint
